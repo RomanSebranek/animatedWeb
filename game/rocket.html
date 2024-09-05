@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: auto;
+            background-color: #e8e8e8;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const rocketImg = new Image();
+        rocketImg.src = 'images/rockets/rocket1.png';
+
+        const spaceObjectImages = [
+            'images/spaceObjects/spaceObject1.png',
+            'images/spaceObjects/spaceObject2.png',
+            'images/spaceObjects/spaceObject3.png'
+        ];
+
+        const explosionImg = new Image();
+        explosionImg.src = 'images/explosions/explosion1.png';
+
+        const gameOverImg = new Image();
+        gameOverImg.src = 'images/gameOver.png';
+
+        const rocket = {
+            x: canvas.width / 2 - 30,
+            y: canvas.height - 75,
+            width: 50,
+            height: 50,
+            img: rocketImg
+        };
+
+        const bullets = [];
+        const spaceObjects = [];
+        let score = 0;
+
+        let gamePaused = false;
+
+        function createSpaceObjects() {
+            for (let i = 0; i < 2; i++) {
+                const randomIndex = Math.floor(Math.random() * spaceObjectImages.length);
+                const spaceObject = {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * -canvas.height,
+                    width: 40,
+                    height: 40,
+                    speed: Math.random() + 1,
+                    image: new Image()
+                };
+                spaceObject.image.src = spaceObjectImages[randomIndex];
+                spaceObjects.push(spaceObject);
+            }
+        }
+        createSpaceObjects();
+
+        canvas.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX - canvas.offsetLeft;
+            rocket.x = mouseX - rocket.width / 2;
+        });
+
+        function shootBullet() {
+            if (!gamePaused) {
+                const bullet = {
+                    x: rocket.x + rocket.width / 2,
+                    y: rocket.y,
+                    width: 6,
+                    height: 20,
+                    speed: 7,
+                    color: 'gray'
+                };
+                bullets.push(bullet);
+            }
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function update() {
+            if (!gamePaused) {
+                moveRocket();
+                moveBullets();
+                moveSpaceObjects();
+                detectCollisions();
+                detectRocketCollision();
+            }
+        }
+
+        function moveRocket() {
+            if (rocket.x < 0) {
+                rocket.x = 0;
+            }
+            if (rocket.x > canvas.width - rocket.width) {
+                rocket.x = canvas.width - rocket.width;
+            }
+        }
+
+        function moveBullets() {
+            if (!gamePaused) {
+                bullets.forEach((bullet) => {
+                    bullet.y -= bullet.speed;
+                });
+                bullets.forEach((bullet, index) => {
+                    if (bullet.y < 0) {
+                        bullets.splice(index, 1);
+                    }
+                });
+            }
+        }
+
+        function moveSpaceObjects() {
+            if (!gamePaused) {
+                spaceObjects.forEach((spaceObject) => {
+                    spaceObject.y += spaceObject.speed;
+                    if (spaceObject.y > canvas.height) {
+                        spaceObject.y = Math.random() * -canvas.height;
+                        spaceObject.x = Math.random() * canvas.width;
+                        const randomIndex = Math.floor(Math.random() * spaceObjectImages.length);
+                        spaceObject.image.src = spaceObjectImages[randomIndex];
+                    }
+                });
+            }
+        }
+
+        function detectCollisions() {
+            if (!gamePaused) {
+                bullets.forEach((bullet, bulletIndex) => {
+                    spaceObjects.forEach((spaceObject, spaceIndex) => {
+                        if (
+                            bullet.x < spaceObject.x + spaceObject.width &&
+                            bullet.x + bullet.width > spaceObject.x &&
+                            bullet.y < spaceObject.y + spaceObject.height &&
+                            bullet.y + bullet.height > spaceObject.y
+                        ) {
+                            bullets.splice(bulletIndex, 1);
+                            spaceObjects.splice(spaceIndex, 1);
+                            score++; // Inkrementace počítadla sestřelených objektů
+                            createSpaceObjects();
+                        }
+                    });
+                });
+            }
+        }
+
+        function detectRocketCollision() {
+            spaceObjects.forEach((spaceObject, index) => {
+                if (
+                    rocket.x < spaceObject.x + spaceObject.width &&
+                    rocket.x + rocket.width > spaceObject.x &&
+                    rocket.y < spaceObject.y + spaceObject.height &&
+                    rocket.y + rocket.height > spaceObject.y
+                ) {
+                    gamePaused = true;
+                    rocket.img = explosionImg;
+                    setTimeout(() => {
+                        gamePaused = false;
+                        resetGame();
+                    }, 3000); // Pauza na 3 sekundy (3000 ms)
+                }
+            });
+        }
+
+        function resetGame() {
+            rocket.x = canvas.width / 2 - 30;
+            rocket.y = canvas.height - 75;
+            rocket.img = rocketImg;
+            bullets.length = 0;
+            spaceObjects.length = 0;
+            score = 0; // Resetování počítadla sestřelených objektů
+            createSpaceObjects();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(rocket.img, rocket.x, rocket.y, rocket.width, rocket.height);
+            if (gamePaused) {
+                const scaleFactor = 0.5;
+                const scaledWidth = gameOverImg.width * scaleFactor;
+                const scaledHeight = gameOverImg.height * scaleFactor;
+                ctx.drawImage(gameOverImg, canvas.width / 2 - scaledWidth / 2, canvas.height / 2 - scaledHeight / 2, scaledWidth, scaledHeight);
+            }
+            ctx.fillStyle = 'grey';
+            ctx.font = '24px Arial';
+            ctx.textAlign = 'right';
+            ctx.fillText(`Score: ${score.toString().padStart(3, '0')}`, canvas.width - 10, 30); // Vykreslení počítadla sestřelených objektů s předřazenými nulami
+            bullets.forEach((bullet) => {
+                ctx.fillStyle = bullet.color;
+                ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+            spaceObjects.forEach((spaceObject) => {
+                ctx.drawImage(spaceObject.image, spaceObject.x, spaceObject.y, spaceObject.width, spaceObject.height);
+            });
+        }
+
+        setInterval(shootBullet, 200);
+        gameLoop();
+    </script>
+</body>
+</html>

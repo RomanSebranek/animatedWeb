@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Contact Form</title>
+</head>
+<body>
+    <header>
+        <a href="../index.html"><img src="../images/logo.png" alt="Logo"></a>
+    </header>
+    <main class="form-container">
+        <p class="navigation">migration services / O365 / contacting form</p>
+        <h1>Contact Us</h1>
+        <p>Leave some contact here and we will reach you out!</p>
+        <form onsubmit="showPopup(event)">
+            <div class="form-row">
+                <input type="text" class="form-field half-width" placeholder="Name" name="name">
+                <input type="text" class="form-field half-width" placeholder="Surname" name="surname">
+            </div>
+            <div class="form-row">
+                <input type="text" class="form-field full-width" placeholder="Company" name="company">
+            </div>
+            <div class="form-row">
+                <textarea class="form-field full-width description-field" placeholder="Description" name="description"></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </main>
+    <footer>
+        <p>you can also contact us directly: info@greycorbel.com</p>
+    </footer>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="popup">
+        <h2>Got it!</h2>
+        <p>as soon as a living being notices it, we'll get in touch.</p>
+        <div class="countdown" id="countdown">3</div>
+    </div>
+    <script src="../scripts.js"></script>
+</body>
+</html>

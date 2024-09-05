@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>O365</title>
+</head>
+<body>
+    <header>
+        <a href="../index.html"><img src="../images/logo.png" alt="Logo"></a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="hamburger-icon">☰</span>
+        </div>        
+    </header>
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="close-icon">✖</span>
+        </div>
+        <div class="menu-content">
+            <a class="menu-headline">PRODUCTS</a>
+            <a href="#">ADMPWD.E</a>
+            <a href="#">MIGRATION FRAMEWORK</a>
+            <a href="#">MANAGE-AUTOMATION ACCOUNT</a>
+            <a href="#">COSMOS DB HIGHLIGTER</a>
+            <a class="menu-headline" href="contact.html">CONTACT</a>
+        </div>
+    </div>
+    <main id="main-content" class="slide-in-from-bottom">
+        <p class="navigation"><a href="index.html">migration services</a> / O365</p>
+        <!-- Video místo animace -->
+        <video controls autoplay muted loop>
+            <source src="../animations/O365.mp4" type="video/mp4">
+            Váš prohlížeč nepodporuje přehrávání videa.
+        </video>
+        <div class="button-container">
+            <button onclick="navigateTo('../form/form.html', 'up')" class="sweet-button">Sweet. I'm in...</button>
+            <button onclick="navigateTo('../game/gamepage.html', 'up')" class="game-button">I don't care, I wanna play game!</button>
+        </div>
+    </main>
+    <footer>
+        <p>you can also contact us directly: info@greycorbel.com</p>
+    </footer>
+    <script src="../scripts.js"></script>
+</body>
+</html>

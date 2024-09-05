@@ -1,0 +1,506 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoImg {
+    top: 10px;
+    left: 10px;
+    height: 50px;
+}
+
+header img {
+    height: 50px;
+}
+
+.menu-toggle {
+    font-size: 22px;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 10px;
+    position: relative;
+    z-index: 99; /* Ensure it is above the overlay */
+}
+
+.hamburger-icon {
+    display: block;
+}
+
+.menu-headline {
+    font-size: 60px !important;
+    padding-bottom: 5px !important;
+    text-decoration: underline !important;
+    padding-top: 30px !important;
+}
+
+.close-icon {
+    display: none;
+    color: rgb(25, 25, 25);
+    position: absolute;
+    top: 5px;
+    right: 4px;
+    font-size: 24px;
+    z-index: 1999 !important; /* Ensure it is above the overlay */
+}
+
+.menu-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%; /* definuje šířku postraního menu */
+    height: 100%;
+    background-color: rgb(243, 243, 243);
+    border: black;
+    color: white;
+    z-index: 1001;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: slideInFromRight 0.5s forwards;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 50px;
+    text-transform: uppercase;
+}
+
+.menu-content a {
+    color: rgb(25, 25, 25);
+    text-decoration: none;
+    margin: 3px 0;
+    font-size: 32px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-content a:hover {
+    color: rgb(212, 146, 59);
+}
+
+.menu-overlay.open {
+    animation: slideInFromRight 0.5s forwards;
+}
+
+.menu-overlay.close {
+    animation: slideOutToRight 0.5s forwards;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: -40px;
+}
+
+h1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+main h1 {
+    font-size: 46px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+}
+
+.buttons button {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: black;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+a img {
+    cursor: pointer;
+}
+
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutToTop {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutToBottom {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.slide-in-from-right {
+    animation: slideInFromRight 0.5s forwards;
+}
+
+.slide-in-from-left {
+    animation: slideInFromLeft 0.5s forwards;
+}
+
+.slide-in-from-top {
+    animation: slideInFromTop 0.5s forwards;
+}
+
+.slide-in-from-bottom {
+    animation: slideInFromBottom 0.5s forwards;
+}
+
+.slide-out-to-left {
+    animation: slideOutToLeft 0.5s forwards;
+}
+
+.slide-out-to-right {
+    animation: slideOutToRight 0.5s forwards;
+}
+
+.slide-out-to-top {
+    animation: slideOutToTop 0.5s forwards;
+}
+
+.slide-out-to-bottom {
+    animation: slideOutToBottom 0.5s forwards;
+}
+
+.button-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Mezery mezi tlačítky */
+}
+
+.sweet-button,
+.game-button {
+    padding: 10px 20px;
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sweet-button:hover,
+.game-button:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    width: 420px; /* Šířka pro kombinaci Name a Surname */
+}
+
+.form-field {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+    color: lightgray;
+}
+
+.form-field::placeholder {
+    color: lightgray;
+}
+
+.half-width {
+    width: 200px; /* Poloviční šířka pro Name a Surname */
+}
+
+.full-width {
+    width: 420px; /* Plná šířka pro Company a Description */
+}
+
+.description-field {
+    height: 100px; /* Výška pro Description */
+    resize: none;
+}
+
+.submit-button {
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Styles for the confirm form popup */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.popup h2 {
+    margin: 0;
+    font-size: 18px;
+    color: black;
+}
+
+.countdown {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+/* Styles for the overlay */
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3); /* Bílá s 30% průhledností */
+    backdrop-filter: blur(5px);
+    z-index: 1000; /* Below the popup */
+}
+
+/* Additional styles for main page */
+.main-page p {
+    text-align: center;
+    color: black;
+    font-size: 25px;
+    padding-bottom: 1px;
+}
+
+.main-page body {
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.main-page .content {
+    background-color: #dbdbdb;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-page iframe {
+    width: 800px;
+    height: 500px; /* Adjust this height to fit the content */
+    border: 1px;
+    background-color: #d4d4d4;
+}
+
+.game-content {
+    padding-bottom: 20px;
+}
+
+.social-icons {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons img {
+    width: 40px;
+    height: 40px;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: 18px;
+    line-height: 0.7;
+    width: 80%; /* Rozšíření celého kontejneru contact-info */
+    margin: 20px auto; /* Centrované zarovnání */
+}
+
+.contact-column {
+    flex: 1;
+    text-align: left;
+}
+
+.contact-column:first-child {
+    margin-right: 40px; /* Větší mezera mezi první a druhou sloupcem */
+}
+
+h1-contact {
+    padding-top: 50px !important;
+    text-align: center;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;  /* Přidáno */
+}
+
+.map iframe {
+    width: 100%;
+    height: 450px;
+    filter: grayscale(100%);
+    border: none;
+}
+
+
+

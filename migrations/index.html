@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Migrate Services</title>
+</head>
+<body>
+    <header>
+        <a href="../index.html"><img src="../images/logo.png" alt="Logo"></a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="hamburger-icon">☰</span>
+        </div>        
+    </header>
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="close-icon">✖</span>
+        </div>
+        <div class="menu-content">
+            <a class="menu-headline">PRODUCTS</a>
+            <a href="#">ADMPWD.E</a>
+            <a href="#">MIGRATION FRAMEWORK</a>
+            <a href="#">MANAGE-AUTOMATION ACCOUNT</a>
+            <a href="#">COSMOS DB HIGHLIGTER</a>
+            <a class="menu-headline" href="contact.html">CONTACT</a>
+        </div>
+    </div>
+    <main id="main-content" class="slide-in-from-right">
+        <p class="navigation">migration services</p>
+        <h1>Cool. What kind of migration you loking for?</h1>
+        <div class="buttons">
+            <div class="button-row">
+                <button onclick="navigateTo('O365.html', 'up')">...to O365</button>
+                <button>on premise AD</button>
+                <button>anything else</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>you can also contact us directly: info@greycorbel.com</p>
+    </footer>
+    <script src="../scripts.js"></script>
+</body>
+</html>

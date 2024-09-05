@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>GreyCorbel</title>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="hamburger-icon">☰</span>
+        </div>        
+    </header>
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span class="close-icon">✖</span>
+        </div>
+        <div class="menu-content">
+            <a class="menu-headline">PRODUCTS</a>
+            <a href="#">ADMPWD.E</a>
+            <a href="#">MIGRATION FRAMEWORK</a>
+            <a href="#">MANAGE-AUTOMATION ACCOUNT</a>
+            <a href="#">COSMOS DB HIGHLIGTER</a>
+            <a class="menu-headline" href="contact.html">CONTACT</a>
+        </div>
+    </div>
+    <main id="main-content">
+    <div>
+        <h1>Hey there, what do you need?</h1>
+        <div class="buttons">
+            <div class="button-row">
+                <button onclick="navigateTo('migrations/index.html', 'left')">I want to migrate</button>
+                <button>I need code development</button>
+                <button>I need to assist with my infrastructure</button>
+            </div>
+            <div class="button-row">
+                <button>I'm interested in automation</button>
+                <button>AdmPwd.E and other products</button>
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer>
+        <p>you can also contact us directly: info@greycorbel.com</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/company/greycorbel-solutions/" target="_blank"><img src="images/socialMedia/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/GreyCorbel" target="_blank"><img src="images/socialMedia/github.png" alt="GitHub"></a>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
