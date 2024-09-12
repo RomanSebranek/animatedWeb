@@ -194,15 +194,15 @@ main h1 {
 .buttons button .back {
     transform: rotateY(180deg); /* Zadní strana otočená o 180 stupňů */
     flex-direction: column;
+    text-align: center;
     color: white; /* Barva textu */
     background-color: black; /* Pozadí zadní strany */
     padding: 20px; /* Vnitřní odsazení */
-    padding-top: 10px;
 }
 
 .buttons button .back p {
     margin: 0;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -222,8 +222,6 @@ main h1 {
     color: white;
     height: 300px; /* Zvýšení výšky tlačítka po hoveru */
 }
-
-
 
 /* konec animace převrácení buttonku */
 
