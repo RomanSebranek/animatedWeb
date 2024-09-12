@@ -31,7 +31,17 @@
         <h1>Hey there, what do you need?</h1>
         <div class="buttons">
             <div class="button-row">
-                <button onclick="navigateTo('migrations/index.html', 'left')">I want to migrate</button>
+                <button>
+                    <div class="card-content">
+                        <div class="front">I want to migrate</div>
+                        <div class="back">
+                            <p>We do migrate</p> </br>
+                            <a href="#" onclick="navigateTo('migrations/O365.html', 'left'); return false;">service1</a>
+                            <a href="#">Service2</a>
+                            <a href="#">Service3</a>
+                        </div>
+                    </div>                
+                </button>
                 <button>I need code development</button>
                 <button>I need to assist with my infrastructure</button>
             </div>
