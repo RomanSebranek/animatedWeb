@@ -193,17 +193,22 @@ main h1 {
 
 .buttons button .back {
     transform: rotateY(180deg); /* Zadní strana otočená o 180 stupňů */
+    display: flex;
     flex-direction: column;
+    justify-content: flex-start; /* Zarovnání obsahu k vrchu */
+    align-items: center; /* Zarovnání obsahu na střed horizontálně */
     text-align: center;
     color: white; /* Barva textu */
     background-color: black; /* Pozadí zadní strany */
-    padding: 20px; /* Vnitřní odsazení */
+    padding: 10px; /* Vnitřní odsazení */
 }
 
 .buttons button .back p {
     margin: 0;
     font-size: 16px;
     font-weight: bold;
+    padding-top: 10px;
+    text-decoration: underline;
 }
 
 .buttons button .back a {
@@ -220,7 +225,7 @@ main h1 {
 .buttons button:hover {
     background-color: black;
     color: white;
-    height: 300px; /* Zvýšení výšky tlačítka po hoveru */
+    height: 250px; /* Zvýšení výšky tlačítka po hoveru */
 }
 
 /* konec animace převrácení buttonku */
